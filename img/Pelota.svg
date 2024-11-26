@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg48"
+   width="16.149332"
+   height="16.147999"
+   viewBox="0 0 16.149332 16.147999"
+   sodipodi:docname="Pelota.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs52">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath21772">
+      <path
+         d="m 2982.18,3081.68 c 0,-12.13 3.6,-23.42 9.76,-32.89 9.49,-6.16 20.77,-9.77 32.88,-9.77 33.47,0 60.6,27.11 60.6,60.56 0,12.16 -3.61,23.44 -9.77,32.91 -9.48,6.14 -20.77,9.75 -32.91,9.75 -33.44,0 -60.56,-27.09 -60.56,-60.56 z"
+         id="path21770" />
+    </clipPath>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(83.701,83.701,83.701,-83.701,2991.95,3048.79)"
+       spreadMethod="pad"
+       id="linearGradient21778">
+      <stop
+         style="stop-opacity:1;stop-color:#e79a3b"
+         offset="0"
+         id="stop21774" />
+      <stop
+         style="stop-opacity:1;stop-color:#f9c67c"
+         offset="1"
+         id="stop21776" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="namedview50"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="1.8555823"
+     inkscape:cx="-56.855468"
+     inkscape:cy="15.35906"
+     inkscape:window-width="1366"
+     inkscape:window-height="699"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g56">
+    <inkscape:page
+       x="0"
+       y="0"
+       id="page54"
+       width="16.149332"
+       height="16.147999" />
+  </sodipodi:namedview>
+  <g
+     id="g56"
+     inkscape:groupmode="layer"
+     inkscape:label="Page 1"
+     transform="matrix(1.3333333,0,0,-1.3333333,-321.81389,423.69977)">
+    <path
+       d="m 3042.74,3021.13 c -33.44,0 -60.56,27.09 -60.56,60.55 0,33.47 27.12,60.56 60.56,60.56 33.45,0 60.56,-27.09 60.56,-60.56 0,-33.46 -27.11,-60.55 -60.56,-60.55"
+       style="display:inline;fill:#cb8d3c;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="oscuro"
+       transform="matrix(0.1,0,0,0.1,-56.857576,3.5508376)" />
+    <path
+       d="m 2982.18,3081.68 c 0,-12.13 3.6,-23.42 9.76,-32.89 9.49,-6.16 20.77,-9.77 32.88,-9.77 33.47,0 60.6,27.11 60.6,60.56 0,12.16 -3.61,23.44 -9.77,32.91 -9.48,6.14 -20.77,9.75 -32.91,9.75 -33.44,0 -60.56,-27.09 -60.56,-60.56"
+       style="display:inline;fill:url(#linearGradient21778);fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="semi_brillo"
+       transform="matrix(0.1,0,0,0.1,-56.857576,3.5508376)" />
+    <path
+       d="m 3008.22,3100.13 c -3.48,2.28 -3.21,8.76 0.54,14.46 3.78,5.74 9.61,8.56 13.09,6.28 3.43,-2.28 3.19,-8.75 -0.57,-14.48 -3.76,-5.74 -9.61,-8.53 -13.06,-6.26"
+       style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="brillo"
+       transform="matrix(0.1,0,0,0.1,-56.857576,3.5508376)" />
+  </g>
+</svg>
