@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ruleta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/themes/dark/dark.css">
   </head>
   <body>
     <div id="div_ruleta_tablero" style="display: flex;">
@@ -17,66 +19,66 @@
       <table class="tablero">
         <!-- Fila del 0 -->
         <tr>
-          <td id="0" class="casilla verde center-only" rowspan="3">0</td>
-          <td id="3" class="casilla roja">3</td>
-          <td id="6" class="casilla negra">6</td>
-          <td id="9" class="casilla roja">9</td>
-          <td id="12" class="casilla roja">12</td>
-          <td id="15" class="casilla negra">15</td>
-          <td id="18" class="casilla roja">18</td>
-          <td id="21" class="casilla roja">21</td>
-          <td id="24" class="casilla negra">24</td>
-          <td id="27" class="casilla roja">27</td>
-          <td id="30" class="casilla roja">30</td>
-          <td id="33" class="casilla negra">33</td>
-          <td id="36" class="casilla roja">36</td>
-          <td id="fila1" class="casilla apuesta center-only">2 a 1</td>
+          <td id="0" class="casilla verde center-only" rowspan="3" onclick="tdclick()">0</td>
+          <td id="3" class="casilla roja bottom-left center-left up-left up up-right" onclick="tdclick()">3</td>
+          <td id="6" class="casilla negra up-left up up-right" onclick="tdclick()">6</td>
+          <td id="9" class="casilla roja up-left up up-right" onclick="tdclick()">9</td>
+          <td id="12" class="casilla roja up-left up up-right" onclick="tdclick()">12</td>
+          <td id="15" class="casilla negra up-left up up-right" onclick="tdclick()">15</td>
+          <td id="18" class="casilla roja up-left up up-right" onclick="tdclick()">18</td>
+          <td id="21" class="casilla roja up-left up up-right" onclick="tdclick()">21</td>
+          <td id="24" class="casilla negra up-left up up-right" onclick="tdclick()">24</td>
+          <td id="27" class="casilla roja up-left up up-right" onclick="tdclick()">27</td>
+          <td id="30" class="casilla roja up-left up up-right" onclick="tdclick()">30</td>
+          <td id="33" class="casilla negra up-left up up-right" onclick="tdclick()">33</td>
+          <td id="36" class="casilla roja up-left up up-right center-right bottom-right" onclick="tdclick()">36</td>
+          <td id="fila1" class="casilla apuesta center-only" onclick="tdclick()">2 a 1</td>
         </tr>
         <tr>
-          <td id="2" class="casilla negra">2</td>
-          <td id="5" class="casilla roja">5</td>
-          <td id="8" class="casilla negra">8</td>
-          <td id="11" class="casilla negra">11</td>
-          <td id="14" class="casilla roja">14</td>
-          <td id="17" class="casilla negra">17</td>
-          <td id="20" class="casilla negra">20</td>
-          <td id="23" class="casilla roja">23</td>
-          <td id="26" class="casilla negra">26</td>
-          <td id="29" class="casilla negra">29</td>
-          <td id="32" class="casilla roja">32</td>
-          <td id="35" class="casilla negra">35</td>
-          <td id="fila2" class="casilla apuesta center-only">2 a 1</td>
+          <td id="2" class="casilla negra up-left center-left bottom-left" onclick="tdclick()">2</td>
+          <td id="5" class="casilla roja" onclick="tdclick()">5</td>
+          <td id="8" class="casilla negra" onclick="tdclick()">8</td>
+          <td id="11" class="casilla negra" onclick="tdclick()">11</td>
+          <td id="14" class="casilla roja" onclick="tdclick()">14</td>
+          <td id="17" class="casilla negra" onclick="tdclick()">17</td>
+          <td id="20" class="casilla negra" onclick="tdclick()">20</td>
+          <td id="23" class="casilla roja" onclick="tdclick()">23</td>
+          <td id="26" class="casilla negra" onclick="tdclick()">26</td>
+          <td id="29" class="casilla negra" onclick="tdclick()">29</td>
+          <td id="32" class="casilla roja" onclick="tdclick()">32</td>
+          <td id="35" class="casilla negra up-right center-right bottom-right" onclick="tdclick()">35</td>
+          <td id="fila2" class="casilla apuesta center-only" onclick="tdclick()">2 a 1</td>
         </tr>
         <tr>
-          <td id="1" class="casilla roja">1</td>
-          <td id="4" class="casilla negra">4</td>
-          <td id="7" class="casilla roja">7</td>
-          <td id="10" class="casilla negra">10</td>
-          <td id="13" class="casilla negra">13</td>
-          <td id="16" class="casilla roja">16</td>
-          <td id="19" class="casilla roja">19</td>
-          <td id="22" class="casilla negra">22</td>
-          <td id="25" class="casilla roja">25</td>
-          <td id="28" class="casilla negra">28</td>
-          <td id="31" class="casilla negra">31</td>
-          <td id="34" class="casilla roja">34</td>
-          <td id="fila3" class="casilla apuesta center-only">2 a 1</td>
+          <td id="1" class="casilla roja up-left center-left bottom-left bottom bottom-right" onclick="tdclick()">1</td>
+          <td id="4" class="casilla negra bottom-left bottom bottom-right" onclick="tdclick()">4</td>
+          <td id="7" class="casilla roja bottom-left bottom bottom-right" onclick="tdclick()">7</td>
+          <td id="10" class="casilla negra bottom-left bottom bottom-right" onclick="tdclick()">10</td>
+          <td id="13" class="casilla negra bottom-left bottom bottom-right" onclick="tdclick()">13</td>
+          <td id="16" class="casilla roja bottom-left bottom bottom-right" onclick="tdclick()">16</td>
+          <td id="19" class="casilla roja bottom-left bottom bottom-right" onclick="tdclick()">19</td>
+          <td id="22" class="casilla negra bottom-left bottom bottom-right" onclick="tdclick()">22</td>
+          <td id="25" class="casilla roja bottom-left bottom bottom-right" onclick="tdclick()">25</td>
+          <td id="28" class="casilla negra bottom-left bottom bottom-right" onclick="tdclick()">28</td>
+          <td id="31" class="casilla negra bottom-left bottom bottom-right" onclick="tdclick()">31</td>
+          <td id="34" class="casilla roja bottom-left bottom bottom-right center-right up-right" onclick="tdclick()">34</td>
+          <td id="fila3" class="casilla apuesta center-only" onclick="tdclick()">2 a 1</td>
         </tr>
         <!-- Fila de docenas -->
         <tr>
-          <td id="vacio" rowspan="2"></td>
-          <td id="docena1" colspan="4" class="casilla apuesta center-only">1ª docena</td>
-          <td id="docena2" colspan="4" class="casilla apuesta center-only">2ª docena</td>
-          <td id="docena3" colspan="4" class="casilla apuesta center-only">3ª docena</td>
+          <td id="vacio" class="none" rowspan="2"></td>
+          <td id="docena1" colspan="4" class="casilla apuesta center-only" onclick="tdclick()">1ª docena</td>
+          <td id="docena2" colspan="4" class="casilla apuesta center-only" onclick="tdclick()">2ª docena</td>
+          <td id="docena3" colspan="4" class="casilla apuesta center-only" onclick="tdclick()">3ª docena</td>
         </tr>
         <!-- Fila de apuestas -->
         <tr>
-          <td id="1-18" colspan="2" class="casilla apuesta center-only">1 - 18</td>
-          <td id="par" colspan="2" class="casilla apuesta center-only">Par</td>
-          <td id="rojo" colspan="2" class="casilla apuesta rojo center-only">♦</td>
-          <td id="negro" colspan="2" class="casilla apuesta negro center-only">♦</td>
-          <td id="impar" colspan="2" class="casilla apuesta center-only">Impar</td>
-          <td id="19-36" colspan="2" class="casilla apuesta center-only">19 - 36</td>
+          <td id="1-18" colspan="2" class="casilla apuesta center-only" onclick="tdclick()">1 - 18</td>
+          <td id="par" colspan="2" class="casilla apuesta center-only" onclick="tdclick()">Par</td>
+          <td id="rojo" colspan="2" class="casilla apuesta rojo center-only" onclick="tdclick()">♦</td>
+          <td id="negro" colspan="2" class="casilla apuesta negro center-only" onclick="tdclick()">♦</td>
+          <td id="impar" colspan="2" class="casilla apuesta center-only" onclick="tdclick()">Impar</td>
+          <td id="19-36" colspan="2" class="casilla apuesta center-only" onclick="tdclick()">19 - 36</td>
         </tr>
       </table>
     </div>
@@ -91,6 +93,8 @@
 
 <script>
   let ruleta_girando = false;
+  const posiciones = {1:{numero:32,color:"red"},2:{numero:15,color:"black"},3:{numero:19,color:"red"},4:{numero:4,color:"black"},5:{numero:21,color:"red"},6:{numero:2,color:"black"},7:{numero:25,color:"red"},8:{numero:17,color:"black"},9:{numero:34,color:"red"},10:{numero:6,color:"black"},11:{numero:27,color:"red"},12:{numero:13,color:"black"},13:{numero:36,color:"red"},14:{numero:11,color:"black"},15:{numero:30,color:"red"},16:{numero:8,color:"black"},17:{numero:23,color:"red"},18:{numero:10,color:"black"},19:{numero:5,color:"red"},20:{numero:24,color:"black"},21:{numero:16,color:"red"},22:{numero:33,color:"black"},23:{numero:1,color:"red"},24:{numero:20,color:"black"},25:{numero:14,color:"red"},26:{numero:31,color:"black"},27:{numero:9,color:"red"},28:{numero:22,color:"black"},29:{numero:18,color:"red"},30:{numero:29,color:"black"},31:{numero:7,color:"red"},32:{numero:28,color:"black"},33:{numero:12,color:"red"},34:{numero:35,color:"black"},35:{numero:3,color:"red"},36:{numero:26,color:"black"},37:{numero:0,color:"green"}};
+  let apuestas = {};
 
   function girar_ruleta(){
     if(ruleta_girando == false){
@@ -134,7 +138,6 @@
   }
 
   function calcular_ganador(resultado_ruleta, resultado_pelota){
-    const posiciones = {1:{numero:32,color:"red"},2:{numero:15,color:"black"},3:{numero:19,color:"red"},4:{numero:4,color:"black"},5:{numero:21,color:"red"},6:{numero:2,color:"black"},7:{numero:25,color:"red"},8:{numero:17,color:"black"},9:{numero:34,color:"red"},10:{numero:6,color:"black"},11:{numero:27,color:"red"},12:{numero:13,color:"black"},13:{numero:36,color:"red"},14:{numero:11,color:"black"},15:{numero:30,color:"red"},16:{numero:8,color:"black"},17:{numero:23,color:"red"},18:{numero:10,color:"black"},19:{numero:5,color:"red"},20:{numero:24,color:"black"},21:{numero:16,color:"red"},22:{numero:33,color:"black"},23:{numero:1,color:"red"},24:{numero:20,color:"black"},25:{numero:14,color:"red"},26:{numero:31,color:"black"},27:{numero:9,color:"red"},28:{numero:22,color:"black"},29:{numero:18,color:"red"},30:{numero:29,color:"black"},31:{numero:7,color:"red"},32:{numero:28,color:"black"},33:{numero:12,color:"red"},34:{numero:35,color:"black"},35:{numero:3,color:"red"},36:{numero:26,color:"black"},37:{numero:0,color:"green"}};
     
     let posicion_ganadora = (resultado_ruleta + resultado_pelota);
     
@@ -194,66 +197,212 @@
       // Mostrar el círculo
       circle.style.display = 'block';
 
+      td.classList.remove(
+        'arr-izq', 'arr', 'arr-der',
+        'med-izq', 'med', 'med-der',
+        'aba-izq', 'aba', 'aba-der'
+      );
+
       // Determinar la zona
       if (y < height / 3) {
-        if (x < width / 3) {
+        if (x < width / 3 & !td.classList.contains('up-left')) {
           // Arriba-Izquierda
+          td.classList.add('arr-izq');
           circle.style.top = '-17%';
           circle.style.left = '-17%';
           circle.style.transform = 'translate(0%)';
-        } else if (x < (2 * width) / 3) {
+        } else if (x < (2 * width) / 3  & !td.classList.contains('up')) {
           // Arriba-Centro
+          td.classList.add('arr');
           circle.style.top = '-17%';
           circle.style.left = '50%';
           circle.style.transform = 'translateX(-50%)';
-        } else {
+        } else if(!td.classList.contains('up-right')){
           // Arriba-Derecha
+          td.classList.add('arr-der');
           circle.style.top = '-17%';
           circle.style.left = '117%';
           circle.style.transform = 'translateX(-100%)';
         }
       } else if (y < (2 * height) / 3) {
-        if (x < width / 3) {
+        if (x < width / 3 & !td.classList.contains('center-left')) {
           // Medio-Izquierda
+          td.classList.add('med-izq');
           circle.style.top = '50%';
           circle.style.left = '-17%';
           circle.style.transform = 'translateY(-50%)';
-        } else if (x < (2 * width) / 3) {
+        } else if (x < (2 * width) / 3 & !td.classList.contains('center')) {
           // Medio-Centro
+          td.classList.add('med');
           circle.style.top = '50%';
           circle.style.left = '50%';
           circle.style.transform = 'translate(-50%, -50%)';
-        } else {
+        } else if(!td.classList.contains('center-right')){
           // Medio-Derecha
+          td.classList.add('med-der');
           circle.style.top = '50%';
           circle.style.left = '117%';
           circle.style.transform = 'translate(-100%, -50%)';
         }
-      } else {
-        if (x < width / 3) {
+      }else{
+        if (x < width / 3 & !td.classList.contains('bottom-left')) {
           // Abajo-Izquierda
+          td.classList.add('aba-izq');
           circle.style.top = '117%';
           circle.style.left = '-17%';
           circle.style.transform = 'translateY(-100%)';
-        } else if (x < (2 * width) / 3) {
+        } else if (x < (2 * width) / 3 & !td.classList.contains('bottom')) {
           // Abajo-Centro
+          td.classList.add('aba');
           circle.style.top = '117%';
           circle.style.left = '50%';
           circle.style.transform = 'translate(-50%, -100%)';
-        } else {
+        } else if(!td.classList.contains('bottom-right')){
           // Abajo-Derecha
-          circle.style.top = '115%';
+          td.classList.add('aba-der');
+          circle.style.top = '117%';
           circle.style.left = '117%';
           circle.style.transform = 'translate(-100%, -100%)';
         }
+      }
+
+      if (td.classList.contains('none')) {circle.style.display = 'none';}
+
+      if (td.classList.contains('center-only')) {
+        // Centro
+        td.classList.add('med');
+        circle.style.top = '50%';
+        circle.style.left = '50%';
+        circle.style.transform = 'translate(-50%, -50%)';
       }
     });
 
     td.addEventListener('mouseleave', () => {
       circle.style.display = 'none';
+      td.classList.remove(
+        'arr-izq', 'arr', 'arr-der',
+        'med-izq', 'med', 'med-der',
+        'aba-izq', 'aba', 'aba-der'
+      );
     });
+
   });
 
+  async function tdclick() {
+    var clickeado = event.target;
+    var td_id = clickeado.id;
+    var nueva_apuesta;
+    var ubicacion_circulo = obtener_ubicacion_circulo(clickeado.classList);
+
+    var casillas_apostadas = obtener_casillas_apostadas(ubicacion_circulo, td_id);
+
+    nueva_apuesta = !apuestas[casillas_apostadas] ? true : false;
+
+    if (!nueva_apuesta) {
+      Swal.fire({
+        title: "¿Quieres modificar esta apuesta?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#0A0",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, modifícalo",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (!result.isConfirmed) {
+          return;
+        }
+      });
+    }
+
+    // Pedir monto de la apuesta
+    var monto = await preguntar_monto(nueva_apuesta, casillas_apostadas);
+    
+    // Asignar el monto al diccionario apuestas
+    if (monto > 0) {
+      apuestas[casillas_apostadas] = monto;
+    } else {
+      delete apuestas[casillas_apostadas];
+    }
+    
+    console.log(apuestas);
+  }
+
+  async function preguntar_monto(nueva_apuesta, casillas_apostadas) {
+    // Solicitar la apuesta al jugador
+    const { value: bet, isDismissed } = await Swal.fire({
+      title: nueva_apuesta ? "Ingrese su apuesta" : "Modifique su apuesta",
+      text: "Está apostando a: " + casillas_apostadas,
+      input: "number",
+      inputPlaceholder: "Ingresa un número positivo o 0 para cancelar",
+      inputAttributes: {
+        min: 0,
+        step: 1
+      },
+      showCancelButton: true,
+      inputValidator: (value) => {
+        if (value === '' || value < 0) {
+          return "Por favor ingresa una apuesta válida!";
+        }
+      }
+    });
+
+    // Verificar si el jugador canceló o si la apuesta es válida
+    if (isDismissed || bet === null || bet < 0) {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Apuesta cancelada",
+        showConfirmButton: false,
+        timer: 1500,
+        toast: true, // Esto hará que el Swal sea más pequeño y se muestre como un "toast"
+        timerProgressBar: true
+      });
+      return 0; // Retorna 0 si el jugador cancela o si la apuesta no es válida
+    }
+
+    return parseInt(bet); // Retorna la apuesta como número entero
+  }
+
+  function obtener_ubicacion_circulo(clases){
+    var cantidad_clases = clases.length;
+    var ubicacion_circulo = clases[cantidad_clases - 1]; // med, arr, aba, izq, der
+    
+    return ubicacion_circulo;
+  }
+
+  function obtener_casillas_apostadas(ubicacion_circulo, td_id){
+    switch (ubicacion_circulo) {
+      case 'arr-izq':
+        casillas_apostadas = [String(+td_id-3), String(+td_id-2), td_id, String(+td_id+1)];
+        break;
+      case 'arr':
+        casillas_apostadas = [td_id, String(+td_id+1)];
+        break;
+      case 'arr-der':
+        casillas_apostadas = [td_id, String(+td_id+1), String(+td_id+3), String(+td_id+4)];
+        break;
+      case 'med-izq':
+        casillas_apostadas = [String(+td_id-3), td_id];
+        break;
+      case 'med':
+        casillas_apostadas = [td_id];
+        break;
+      case 'med-der':
+        casillas_apostadas = [td_id, String(+td_id+3)];
+        break;
+      case 'aba-izq':
+        casillas_apostadas = [String(+td_id-4), String(+td_id-3), String(+td_id-1), td_id];
+        break;
+      case 'aba':
+        casillas_apostadas = [String(+td_id-1), td_id];
+        break;
+      case 'aba-der':
+        casillas_apostadas = [String(+td_id-1), td_id, String(+td_id+2), String(+td_id+3)];
+        break;
+    }
+    const resultado = casillas_apostadas.join(',');
+    return resultado;
+  }
 </script>
 
 <style>
@@ -400,7 +549,4 @@ td {
   display: none;
   z-index: 10;
 }
-
-
-
 </style>
