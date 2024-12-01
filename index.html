@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/themes/dark/dark.css">
   </head>
   <body>
-    <div id="div_ruleta_tablero" style="display: flex;">
+    <div id="div_ruleta_tablero" style="display:flex;">
+      <div id="div_puntos" style="display:flex;">
+        <label id="label_puntos" for="puntos">puntos: </label>
+        <input type="text" name="puntos" id="puntos" readonly>
+      </div>
       <div id="div_ruleta_pelota">
         <img id="ruleta" src="img/ruleta.svg" alt="ruleta">
         <div id="div_pelota">
@@ -20,18 +24,18 @@
         <!-- Fila del 0 -->
         <tr>
           <td id="0" class="casilla verde center-only" rowspan="3" onclick="tdclick()">0</td>
-          <td id="3" class="casilla roja bottom-left center-left up-left up up-right" onclick="tdclick()">3</td>
-          <td id="6" class="casilla negra up-left up up-right" onclick="tdclick()">6</td>
-          <td id="9" class="casilla roja up-left up up-right" onclick="tdclick()">9</td>
-          <td id="12" class="casilla roja up-left up up-right" onclick="tdclick()">12</td>
-          <td id="15" class="casilla negra up-left up up-right" onclick="tdclick()">15</td>
-          <td id="18" class="casilla roja up-left up up-right" onclick="tdclick()">18</td>
-          <td id="21" class="casilla roja up-left up up-right" onclick="tdclick()">21</td>
-          <td id="24" class="casilla negra up-left up up-right" onclick="tdclick()">24</td>
-          <td id="27" class="casilla roja up-left up up-right" onclick="tdclick()">27</td>
-          <td id="30" class="casilla roja up-left up up-right" onclick="tdclick()">30</td>
-          <td id="33" class="casilla negra up-left up up-right" onclick="tdclick()">33</td>
-          <td id="36" class="casilla roja up-left up up-right center-right bottom-right" onclick="tdclick()">36</td>
+          <td id="3" class="casilla roja bottom-left center-left up-left" onclick="tdclick()">3</td>
+          <td id="6" class="casilla negra" onclick="tdclick()">6</td>
+          <td id="9" class="casilla roja" onclick="tdclick()">9</td>
+          <td id="12" class="casilla roja" onclick="tdclick()">12</td>
+          <td id="15" class="casilla negra" onclick="tdclick()">15</td>
+          <td id="18" class="casilla roja" onclick="tdclick()">18</td>
+          <td id="21" class="casilla roja" onclick="tdclick()">21</td>
+          <td id="24" class="casilla negra" onclick="tdclick()">24</td>
+          <td id="27" class="casilla roja" onclick="tdclick()">27</td>
+          <td id="30" class="casilla roja" onclick="tdclick()">30</td>
+          <td id="33" class="casilla negra" onclick="tdclick()">33</td>
+          <td id="36" class="casilla roja center-right bottom-right up-right" onclick="tdclick()">36</td>
           <td id="fila1" class="casilla apuesta center-only" onclick="tdclick()">2 a 1</td>
         </tr>
         <tr>
@@ -66,10 +70,10 @@
         </tr>
         <!-- Fila de docenas -->
         <tr>
-          <td id="vacio" class="none" rowspan="2"></td>
-          <td id="docena1" colspan="4" class="casilla apuesta center-only" onclick="tdclick()">1ª docena</td>
-          <td id="docena2" colspan="4" class="casilla apuesta center-only" onclick="tdclick()">2ª docena</td>
-          <td id="docena3" colspan="4" class="casilla apuesta center-only" onclick="tdclick()">3ª docena</td>
+          <td id="vacio" class="none" rowspan="2" style="cursor:default;"></td>
+          <td id="primera docena" colspan="4" class="casilla apuesta center-only" onclick="tdclick()">1ª docena</td>
+          <td id="segunda docena" colspan="4" class="casilla apuesta center-only" onclick="tdclick()">2ª docena</td>
+          <td id="tercera docena" colspan="4" class="casilla apuesta center-only" onclick="tdclick()">3ª docena</td>
         </tr>
         <!-- Fila de apuestas -->
         <tr>
@@ -95,9 +99,75 @@
   let ruleta_girando = false;
   const posiciones = {1:{numero:32,color:"red"},2:{numero:15,color:"black"},3:{numero:19,color:"red"},4:{numero:4,color:"black"},5:{numero:21,color:"red"},6:{numero:2,color:"black"},7:{numero:25,color:"red"},8:{numero:17,color:"black"},9:{numero:34,color:"red"},10:{numero:6,color:"black"},11:{numero:27,color:"red"},12:{numero:13,color:"black"},13:{numero:36,color:"red"},14:{numero:11,color:"black"},15:{numero:30,color:"red"},16:{numero:8,color:"black"},17:{numero:23,color:"red"},18:{numero:10,color:"black"},19:{numero:5,color:"red"},20:{numero:24,color:"black"},21:{numero:16,color:"red"},22:{numero:33,color:"black"},23:{numero:1,color:"red"},24:{numero:20,color:"black"},25:{numero:14,color:"red"},26:{numero:31,color:"black"},27:{numero:9,color:"red"},28:{numero:22,color:"black"},29:{numero:18,color:"red"},30:{numero:29,color:"black"},31:{numero:7,color:"red"},32:{numero:28,color:"black"},33:{numero:12,color:"red"},34:{numero:35,color:"black"},35:{numero:3,color:"red"},36:{numero:26,color:"black"},37:{numero:0,color:"green"}};
   let apuestas = {};
+  const numerosFila1 = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36];
+  const numerosFila2 = [2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35];
+  const numerosFila3 = [1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34];
+  const input_resultado = document.getElementById('input_resultado');
+  const inputPuntos = document.getElementById('puntos');
+
+  document.addEventListener('DOMContentLoaded', function () {
+    inputPuntos.value = 100;
+    Swal.fire({
+      title: "Elige la dificultad",
+      text: "(varia su saldo inicial)",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Normal',
+      denyButtonText: 'Dificil',
+      cancelButtonText: 'Personalizado'
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        inputPuntos.value = 100;
+      } else if (result.isDenied) {
+        inputPuntos.value = 50;
+      } else if (
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        preguntar_monto_inicial();
+      }
+    });
+  });
+
+  async function preguntar_monto_inicial() {
+    // Solicitar la apuesta al jugador
+    const { value: bet, isDismissed } = await Swal.fire({
+      title: "Ingrese su saldo inicial",
+      input: "number",
+      inputPlaceholder: "Ingresa un número positivo",
+      inputAttributes: {
+        min: 1,
+        step: 1
+      },
+      showCancelButton: false,
+      inputValidator: (value) => {
+        if (value === '' || value < 1 || isNaN(value)) {
+          return "Por favor ingresa una apuesta válida!";
+        }
+      }
+    });
+
+    // Verificar si el jugador canceló o si la apuesta es válida
+    if (isDismissed || bet === null || bet < 1) {
+      preguntar_monto_inicial();
+    }
+
+    inputPuntos.value = bet;
+  }
 
   function girar_ruleta(){
     if(ruleta_girando == false){
+      if(apuestas && Object.keys(apuestas).length === 0){
+        Swal.fire({
+          position: "top",
+          icon: "error",
+          title: "Aposta a alguna casilla antes de girar",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        return
+      }
+      console.log(apuestas);
       ruleta_girando = true;
       // Obtener la ruleta
       const ruleta = document.getElementById('ruleta');
@@ -117,19 +187,133 @@
 
       // Espera 3 segundos antes de permitir otra rotación
       setTimeout(() => {
-        ruleta_girando = false;
         setear_input(casilla_ganadora);
+        for (const [casillas, monto] of Object.entries(apuestas)) {
+          apuesta_ganadora = 0;
+          switch (casillas) {
+            case 'primera docena':
+              if(casilla_ganadora.numero>=1 & casilla_ganadora.numero<=12){
+                apuesta_ganadora = 1;
+                monto_a_sumar = monto + (monto * 2);
+              }
+              break;
+            case 'segunda docena':
+              if(casilla_ganadora.numero>=13 & casilla_ganadora.numero<=24){
+                apuesta_ganadora = 1;
+                monto_a_sumar = monto + (monto * 2);
+              }
+              break;
+            case 'tercera docena':
+              if(casilla_ganadora.numero>=25 & casilla_ganadora.numero<=36){
+                apuesta_ganadora = 1;
+                monto_a_sumar = monto + (monto * 2);
+              }
+              break;
+            case '1-18':
+              if(casilla_ganadora.numero>=1 & casilla_ganadora.numero<=18){
+                apuesta_ganadora = 1;
+                monto_a_sumar = monto + (monto * 1);
+              }
+              break;
+            case '19-36':
+              if(casilla_ganadora.numero>=19 & casilla_ganadora.numero<=36){
+                apuesta_ganadora = 1;
+                monto_a_sumar = monto + (monto * 1);
+              }
+              break;
+            case 'par':
+              if (casilla_ganadora.numero % 2 === 0) {
+                apuesta_ganadora = 1;
+                monto_a_sumar = monto + (monto * 1);
+              }
+              break;
+            case 'impar':
+              if (casilla_ganadora.numero % 2 != 0) {
+                apuesta_ganadora = 1;
+                monto_a_sumar = monto + (monto * 1);
+              }
+              break;
+            case 'rojo':
+              if (casilla_ganadora.color === 'red') {
+                apuesta_ganadora = 1;
+                monto_a_sumar = monto + (monto * 1);
+              }
+              break;
+            case 'negro':
+              if (casilla_ganadora.color === 'black') {
+                apuesta_ganadora = 1;
+                monto_a_sumar = monto + (monto * 1);
+              }
+              break;
+            case 'fila1':
+              if (numerosFila1.includes(casilla_ganadora.numero)) {
+                apuesta_ganadora = 1;
+                monto_a_sumar = monto + (monto * 2);
+              }
+              break;
+              case 'fila2':
+              if (numerosFila2.includes(casilla_ganadora.numero)) {
+                apuesta_ganadora = 1;
+                monto_a_sumar = monto + (monto * 2);
+              }
+              break;
+            case 'fila3':
+              if (numerosFila3.includes(casilla_ganadora.numero)) {
+                apuesta_ganadora = 1;
+                monto_a_sumar = monto + (monto * 2);
+              }
+              break;
+              default:
+                let casillasArray = casillas.split(',').map(Number); // Convierte a array de números
+              if(casillasArray.includes(casilla_ganadora.numero)){
+                apuesta_ganadora = 1;
+                if(casillasArray.length == 1){
+                  monto_a_sumar = monto + (monto * 35);
+                }
+                if(casillasArray.length == 2){
+                  monto_a_sumar = monto + (monto * 17);
+                }
+                if(casillasArray.length == 3){
+                  monto_a_sumar = monto + (monto * 11);
+                }
+                if(casillasArray.length == 4){
+                  monto_a_sumar = monto + (monto * 8);
+                }
+                if(casillasArray.length == 6){
+                  monto_a_sumar = monto + (monto * 5);
+                }
+              }
+              break; 
+          }
+          if(apuesta_ganadora == 1){
+            inputPuntos.value = +inputPuntos.value + monto_a_sumar;
+            Swal.fire({
+              position: "top",
+              icon: "success",
+              title: "Felicidades, tu apuesta: " + casillas +  ", gano!",
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }
+        }
         
-        console.log(casilla_ganadora.numero);
+        apuestas = {};
+        ruleta_girando = false;
       }, 5100);
+        
     }else{
-      console.log('espera que termine la anterior tirada wachin');
+      Swal.fire({
+        position: "bottom",
+        icon: "error",
+        title: "Espera que termine la anterior tirada",
+        showConfirmButton: false,
+        timer: 1000
+      });
     }
   }
   
   function setear_input(casilla_ganadora){
 
-    const input_resultado = document.getElementById('input_resultado');
 
     input_resultado.value = '';
     input_resultado.value = casilla_ganadora.numero;
@@ -285,10 +469,20 @@
         'aba-izq', 'aba', 'aba-der'
       );
     });
-
+    
   });
-
+  
   async function tdclick() {
+    if(ruleta_girando){
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Espera que termine la tirada",
+        showConfirmButton: false,
+        timer: 1000
+      });
+      return;
+    }
     var clickeado = event.target;
     var td_id = clickeado.id;
     var nueva_apuesta;
@@ -298,41 +492,39 @@
 
     nueva_apuesta = !apuestas[casillas_apostadas] ? true : false;
 
-    if (!nueva_apuesta) {
-      Swal.fire({
-        title: "¿Quieres modificar esta apuesta?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#0A0",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Sí, modifícalo",
-        cancelButtonText: "Cancelar"
-      }).then((result) => {
-        if (!result.isConfirmed) {
-          return;
-        }
-      });
-    }
-
+    monto_antiguo = !nueva_apuesta ? apuestas[casillas_apostadas] :null;
     // Pedir monto de la apuesta
-    var monto = await preguntar_monto(nueva_apuesta, casillas_apostadas);
+    var monto = await preguntar_monto(nueva_apuesta, casillas_apostadas, monto_antiguo);
     
-    // Asignar el monto al diccionario apuestas
-    if (monto > 0) {
-      apuestas[casillas_apostadas] = monto;
-    } else {
-      delete apuestas[casillas_apostadas];
+    if(typeof(monto) === "number"){
+      // Asignar el monto al diccionario apuestas
+      if (monto > 0) {
+        if(!nueva_apuesta){
+          devolver = apuestas[casillas_apostadas];
+          inputPuntos.value = +inputPuntos.value + devolver;
+        }
+        apuestas[casillas_apostadas] = monto;
+        inputPuntos.value = +inputPuntos.value - monto;
+      } else {
+        if(apuestas[casillas_apostadas]){
+          devolver = apuestas[casillas_apostadas];
+          inputPuntos.value = +inputPuntos.value + devolver;
+          delete apuestas[casillas_apostadas];
+        }
+      }
     }
-    
-    console.log(apuestas);
   }
 
-  async function preguntar_monto(nueva_apuesta, casillas_apostadas) {
+  async function preguntar_monto(nueva_apuesta, casillas_apostadas, monto_antiguo) {
+    // Determinar el valor inicial del input
+    const inputValue = monto_antiguo != null ? +monto_antiguo : '';
+
     // Solicitar la apuesta al jugador
     const { value: bet, isDismissed } = await Swal.fire({
       title: nueva_apuesta ? "Ingrese su apuesta" : "Modifique su apuesta",
       text: "Está apostando a: " + casillas_apostadas,
       input: "number",
+      inputValue: inputValue,
       inputPlaceholder: "Ingresa un número positivo o 0 para cancelar",
       inputAttributes: {
         min: 0,
@@ -340,21 +532,24 @@
       },
       showCancelButton: true,
       inputValidator: (value) => {
-        if (value === '' || value < 0) {
+        if (value === '' || value < 0 || isNaN(value)) {
           return "Por favor ingresa una apuesta válida!";
+        }
+        if(value > +inputPuntos.value){
+          return "No cuenta con suficientes puntos";
         }
       }
     });
 
     // Verificar si el jugador canceló o si la apuesta es válida
     if (isDismissed || bet === null || bet < 0) {
-      Swal.fire({
+      await Swal.fire({
         position: "top-end",
         icon: "error",
         title: "Apuesta cancelada",
         showConfirmButton: false,
         timer: 1500,
-        toast: true, // Esto hará que el Swal sea más pequeño y se muestre como un "toast"
+        toast: true,
         timerProgressBar: true
       });
       return 0; // Retorna 0 si el jugador cancela o si la apuesta no es válida
@@ -362,6 +557,7 @@
 
     return parseInt(bet); // Retorna la apuesta como número entero
   }
+
 
   function obtener_ubicacion_circulo(clases){
     var cantidad_clases = clases.length;
@@ -373,13 +569,25 @@
   function obtener_casillas_apostadas(ubicacion_circulo, td_id){
     switch (ubicacion_circulo) {
       case 'arr-izq':
-        casillas_apostadas = [String(+td_id-3), String(+td_id-2), td_id, String(+td_id+1)];
+        if(numerosFila1.includes(+td_id)){
+          casillas_apostadas = [String(+td_id-5), String(+td_id-4), String(+td_id-3), String(+td_id-2), String(+td_id-1), td_id];
+        }else{
+          casillas_apostadas = [String(+td_id-3), String(+td_id-2), td_id, String(+td_id+1)];
+        }
         break;
       case 'arr':
-        casillas_apostadas = [td_id, String(+td_id+1)];
+        if(numerosFila1.includes(+td_id)){
+          casillas_apostadas = [String(+td_id-2), String(+td_id-1), td_id]
+        }else{
+          casillas_apostadas = [td_id, String(+td_id+1)];
+        }
         break;
       case 'arr-der':
-        casillas_apostadas = [td_id, String(+td_id+1), String(+td_id+3), String(+td_id+4)];
+        if(numerosFila1.includes(+td_id)){
+          casillas_apostadas = [String(+td_id-2), String(+td_id-1), td_id, String(+td_id+1), String(+td_id+2), String(+td_id+3)];
+        }else{
+          casillas_apostadas = [td_id, String(+td_id+1), String(+td_id+3), String(+td_id+4)];
+        }
         break;
       case 'med-izq':
         casillas_apostadas = [String(+td_id-3), td_id];
@@ -398,7 +606,7 @@
         break;
       case 'aba-der':
         casillas_apostadas = [String(+td_id-1), td_id, String(+td_id+2), String(+td_id+3)];
-        break;
+        break; 
     }
     const resultado = casillas_apostadas.join(',');
     return resultado;
@@ -412,6 +620,21 @@
 
   img{
     display: block;
+  }
+
+  #div_puntos{
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  #puntos{
+    margin-top: 1px;
+    width: 50px;
+    height: 25px;
+    text-align: right;
+    color: white;
+    background-color: green;
+    border-color: brown;
   }
 
   /* Contenedor */
