@@ -1,0 +1,3 @@
+por hacer:
+    -pantalla inicial en la que elegir el juego que jugaras
+    -mejorar el estilo

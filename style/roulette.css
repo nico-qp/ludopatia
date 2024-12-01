@@ -7,10 +7,16 @@ body{
     display: block;
   }
 
-  #div_puntos{
-    margin-top: 20px;
-    margin-left: 20px;
-  }
+  #div_puntos {
+    position: absolute;
+    top: 20px; /* Ajusta la posición vertical */
+    left: 20px; /* Ajusta la posición horizontal */
+    z-index: 100; /* Asegura que esté encima de otros elementos */
+    background-color: rgba(0, 128, 0, 0.8); /* Opcional: Añade un fondo semitransparente */
+    padding: 5px; /* Opcional: Espaciado interno */
+    border-radius: 5px; /* Opcional: Bordes redondeados */
+}
+
 
   #puntos{
     margin-top: 1px;

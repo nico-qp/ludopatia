@@ -9,6 +9,10 @@ const input_resultado = document.getElementById('input_resultado');
 const inputPuntos = document.getElementById('puntos');
 
 document.addEventListener('DOMContentLoaded', function () {
+  preguntar_dificultad();
+});
+
+function preguntar_dificultad(){
   inputPuntos.value = 100;
   Swal.fire({
     title: "Elige la dificultad",
@@ -24,13 +28,13 @@ document.addEventListener('DOMContentLoaded', function () {
       inputPuntos.value = 100;
     } else if (result.isDenied) {
       inputPuntos.value = 50;
-    } else if (
-      result.dismiss === Swal.DismissReason.cancel
-    ) {
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
       preguntar_monto_inicial();
     }
   });
-});
+
+  puntos_iniciales = +inputPuntos.value;
+}
 
 async function preguntar_monto_inicial() {
   // Solicitar la apuesta al jugador
@@ -40,7 +44,8 @@ async function preguntar_monto_inicial() {
     inputPlaceholder: "Ingresa un número positivo",
     inputAttributes: {
       min: 1,
-      step: 1
+      step: 1,
+      max: 9999
     },
     showCancelButton: false,
     inputValidator: (value) => {
@@ -125,7 +130,7 @@ function girar_ruleta(){
             }
             break;
           case 'par':
-            if (casilla_ganadora.numero % 2 === 0) {
+            if (casilla_ganadora.numero % 2 === 0 && casilla_ganadora.numero != 0) {
               apuesta_ganadora = 1;
               monto_a_sumar = monto + (monto * 1);
             }
@@ -197,11 +202,26 @@ function girar_ruleta(){
             showConfirmButton: false,
             timer: 1500
           });
+
         }
       }
       
       apuestas = {};
       ruleta_girando = false;
+      if(inputPuntos.value == 0){
+        Swal.fire({
+          icon: "error",
+          title: "Perdiste :,C",
+          text: "Te quedaste sin puntos",
+          showConfirmButton: false,
+          timerProgressBar: true,
+          timer: 3000
+        });
+
+        setTimeout(() => {
+          preguntar_dificultad();
+        }, 3000);
+      }
     }, 5100);
       
   }else{
