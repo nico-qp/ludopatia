@@ -1,0 +1,159 @@
+
+body{
+    background-color: green;
+  }
+
+  img{
+    display: block;
+  }
+
+  #div_puntos{
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  #puntos{
+    margin-top: 1px;
+    width: 50px;
+    height: 25px;
+    text-align: right;
+    color: white;
+    background-color: green;
+    border-color: brown;
+  }
+
+  /* Contenedor */
+  #div_ruleta_pelota{
+    position: relative; /* Base para posicionar los elementos internos */
+    width: 300px; /* Ajusta al tamaño de las imágenes */
+    height: 300px; /* Tamaño fijo para la superposición */
+    margin: 50px; /* Centrar en la página */
+  }
+
+  /* Ruleta */
+  #ruleta{
+    position: absolute; /* Se posiciona en relación al contenedor */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta el centro del elemento */
+    width: 100%; /* Asegura que ocupe todo el contenedor */
+    margin: 0%;
+  }
+
+  #div_pelota{
+    position: relative; /* Base para posicionar los elementos internos */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -100%); /* Ajusta el centro del elemento */
+    transform-origin: 50% 100%; /* Punto de rotación: centro horizontal, borde inferior */
+    width: 15px; /* Ajusta al tamaño de las imágenes */
+    height: 35%; /* Tamaño fijo para la superposición */
+  }
+
+  /* Pelota */
+  #pelota{
+    position: absolute; /* Se posiciona en relación al contenedor */
+    top: 0%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta el centro del elemento */
+    width: 15px; /* Ajusta el tamaño de la pelota */
+    height: 15px; /* Proporcional al tamaño de la pelota */
+    margin: 0%;
+  }
+
+  table.tablero {
+    border-collapse: collapse;
+    background-color: #964B00;
+    border: 5px solid #000;
+    border-radius: 10px;
+    font-size: x-large;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serifs;
+  }
+
+  td {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    color: white;
+    border: 2px solid yellow;
+    cursor:default;
+  }
+
+
+  .casilla.verde {
+    background-color: green;
+  }
+
+  .casilla.roja {
+    background-color: red;
+  }
+
+  .casilla.negra {
+    background-color: black;
+  }
+
+  .casilla.apuesta {
+    background-color:green;
+    color: black;
+    font-weight: normal;
+  }
+
+  .casilla.rojo {
+    color: red;
+    font-size: 50px;
+  }
+
+  .casilla.negro {
+    color: black;
+    font-size: 50px;
+  }
+  
+  #label_resultado{
+    margin-left: 200px;
+  }
+
+  #input_resultado{
+    width: 50px;
+    text-align: right;
+    color: white;
+    background-color: green;
+    border-color: brown;
+  }
+
+  #div_boton_input{
+    margin-left: 10px;
+    margin-top: -50px;
+  }
+
+  table {
+  border-collapse: collapse; /* Elimina espacios entre celdas */
+  margin: 20px auto;
+  }
+
+table {
+  border-collapse: collapse;
+  position: relative;
+}
+
+td {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #333;
+  background-color: #2e8b57;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+}
+
+.circle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  display: none;
+  z-index: 10;
+}
