@@ -36,6 +36,12 @@ function preguntar_dificultad(){
   puntos_iniciales = +inputPuntos.value;
 }
 
+document.addEventListener("keydown", function(event){
+  if(event.key == "Enter"){
+    girar_ruleta();
+  }
+});
+
 async function preguntar_monto_inicial() {
   // Solicitar la apuesta al jugador
   const { value: bet, isDismissed } = await Swal.fire({
@@ -63,6 +69,8 @@ async function preguntar_monto_inicial() {
   inputPuntos.value = bet;
 }
 
+
+
 function girar_ruleta(){
   if(ruleta_girando == false){
     if(apuestas && Object.keys(apuestas).length === 0){
@@ -75,7 +83,6 @@ function girar_ruleta(){
       });
       return
     }
-    console.log(apuestas);
     ruleta_girando = true;
     // Obtener la ruleta
     const ruleta = document.getElementById('ruleta');
@@ -85,8 +92,6 @@ function girar_ruleta(){
     let resultado_pelota = calcular_vueltas();
 
     let casilla_ganadora = calcular_ganador(resultado_ruleta[0], resultado_pelota[0]);
-
-    console.log('la pelota cayo en la casilla ' + casilla_ganadora.numero + ' color ' + casilla_ganadora.color);
     
     reiniciar_ruleta_pelota();
     

@@ -1,3 +1,5 @@
-por hacer:
+general:
     -pantalla inicial en la que elegir el juego que jugaras
+ruleta:
     -mejorar el estilo
+    -mostrar una ficha en la casilla apostada
